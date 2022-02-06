@@ -25,7 +25,7 @@ Create a file named `docker-compose.yml`, then run `docker-compose pull && docke
 version: '3'
 services:
   my-mind:
-    image: thealpaka/tabby:test
+    image: thealpaka/tabby
     container_name: tabby
     ports:
       - 8090:80
