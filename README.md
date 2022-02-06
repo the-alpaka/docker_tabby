@@ -23,7 +23,7 @@ docker run -d \
 thealpaka/tabby
 ```
 
-Then run this command to setup the database
+Then run this command to setup the database, once done you can visit `http://<HOST_IP>:8090` to finish setup for Tabby.
 
 ```bash
 docker run -d \
