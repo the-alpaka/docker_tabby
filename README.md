@@ -53,7 +53,7 @@ services:
     image: thealpaka/tabby
     container_name: tabby
     networks:
-      -backend
+      - backend
     ports:
       - 8090:80
     restart: unless-stopped
