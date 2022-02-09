@@ -1,6 +1,12 @@
 # Docker Tabby
 Tabby in Docker for easier deployment
 
+## To Do
+I'll be working on integrating these features into the docker image over the next couple months. Feel free to help contribute I'm still new to building docker containers and completely new with using github actions to automate the docker build process.
+- Automatic builds to docker hub
+- Synchronize container tags with tabby build version tags in an automated manner
+- Update tabby on container restart
+
 ## Usage
 
 There are two ways you can run this container, either with Docker CLI or Docker-Compose. Setting up this container is super simple you just need to be sure to allow container port 80 through to the host, for example `-p 8090:80` with the mappings respectively `<host_port>:<container_port>`. Use any of the preconfigured options below to get the container up and running quickly. After starting the container go to your favorite web browser and type in `http://<HOST_IP>:8090` to access the Web UI.
