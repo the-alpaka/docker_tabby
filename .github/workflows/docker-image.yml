@@ -35,4 +35,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
-          tags: ${{ secrets.DOCKER_USER }}/test:latest,${{ secrets.DOCKER_USER }}/test:${{ steps.getdate.outputs.date }}
+          tags: ${{ secrets.DOCKER_USER }}/test:${{ steps.getdate.outputs.date }}
