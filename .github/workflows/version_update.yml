@@ -1,0 +1,19 @@
+name: Get latest tag version
+on: 
+  schedule: 
+    - cron: '* 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  logLatestRelease:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: octokit/request-action@v2.x
+        id: get_latest_release
+        with:
+          route: GET /repos/bertvandepoel/tabby/releases/latest
+          owner: octokit
+          repo: request-action
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: "echo ${{ steps.get_latest_release.outputs.data }} > params/VERSION "
