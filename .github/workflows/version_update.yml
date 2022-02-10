@@ -16,4 +16,16 @@ jobs:
           repo: request-action
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "echo ${{ steps.get_latest_release.outputs.data }} > params/VERSION "
+      - run: "echo ${{ steps.get_latest_release.outputs.data }}"
+      
+      - uses: actions/checkout@v2
+      - name: Build
+        run: cargo build --release
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: params/VERSION
+          asset_name: version
+          overwrite: true
+          body: "${{ steps.get_latest_release.outputs.data }}"
