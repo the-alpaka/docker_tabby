@@ -12,8 +12,8 @@ jobs:
         id: get_latest_release
         with:
           route: GET /repos/{owner}/{repo}/releases/latest
-          owner: bertvandepoel
-          repo: tabby
+          owner: 'bertvandepoel'
+          repo: 'tabby'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: "echo latest release: ${{ steps.get_latest_release.outputs.data }}"
