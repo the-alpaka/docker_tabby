@@ -1,23 +1,30 @@
-name: ci
+name: Build Container and Push to Docker Hub
+
 on:
   push:
     branches:
-      - 'main'
-  pull_request:
-    branches:
-      - 'main'
+      - 'params/VERSION'
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       -
-        name: Checkout 
+        name: Checkout
         uses: actions/checkout@v2
-      - 
+      -
         name: Get Date
         id: getdate
         run: echo ::set-output name=date::$(date '+%Y-%m-%d')
+      - 
+        name: Get Name
+        id: getname
+        run: echo ::set-output name=containerName::$(cat params/NAME)
+      - 
+        name: Get Version
+        id: getversion
+        run: echo ::set-output name=version::$(cat params/VERSION)
       -
         name: Login to Docker Hub
         uses: docker/login-action@v1
@@ -41,4 +48,5 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
-          tags: ${{ secrets.DOCKER_USER }}/tabby:latest, ${{ secrets.DOCKER_USER }}/test:${{ steps.getdate.outputs.date }}
+          tags: ${{ secrets.DOCKER_USER }}/${{ steps.getname.outputs.containerName }}:latest, ${{ secrets.DOCKER_USER }}/${{ steps.getname.outputs.containerName }}:${{ steps.getversion.outputs.version }}
+          build-args: VERSION=${{ steps.getversion.outputs.version }}
