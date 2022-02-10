@@ -1,7 +1,5 @@
-name: Get latest tag version
-on: 
-  schedule: 
-    - cron: '* 0 * * *'
+name: Log latest release
+on:
   workflow_dispatch:
 
 jobs:
@@ -11,21 +9,9 @@ jobs:
       - uses: octokit/request-action@v2.x
         id: get_latest_release
         with:
-          route: GET /repos/bertvandepoel/tabby/releases/latest
+          route: GET /repos/{owner}/{repo}/releases/latest
           owner: octokit
           repo: request-action
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "echo ${{ steps.get_latest_release.outputs.data }}"
-      
-      - uses: actions/checkout@v2
-      - name: Build
-        run: cargo build --release
-      - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: params/VERSION
-          asset_name: version
-          overwrite: true
-          body: "${{ steps.get_latest_release.outputs.data }}"
+      - run: "echo latest release: ${{ steps.get_latest_release.outputs.data }}"
