@@ -49,4 +49,4 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           tags: ${{ secrets.DOCKER_USER }}/${{ steps.getname.outputs.containerName }}:latest-test, ${{ secrets.DOCKER_USER }}/${{ steps.getname.outputs.containerName }}:${{ steps.getversion.outputs.version }}-test
-          build-args: VERSION=${{ steps.getversion.outputs.version }}
+          build-args: TAG=${{ steps.getversion.outputs.version }}
