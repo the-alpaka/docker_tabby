@@ -3,8 +3,8 @@ Tabby in Docker for easier deployment
 
 ## To Do
 I'll be working on integrating these features into the docker image over the next couple months. Feel free to help contribute I'm still new to building docker containers and completely new with using github actions to automate the docker build process.
-- Automatic builds to docker hub
-- Synchronize container tags with tabby build version tags in an automated manner
+~~- Automatic builds to docker hub~~ without a backend server needed to force updates
+~~- Synchronize container tags with tabby build version tags in an automated manner~~
 - Update tabby on container restart
 
 ## Usage
