@@ -1,5 +1,5 @@
 FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.14
-ARG TAG=latest
+ARG TAG
 RUN \
     echo 'Install Dependencies' && \
     apk add --no-cache --upgrade \ 
