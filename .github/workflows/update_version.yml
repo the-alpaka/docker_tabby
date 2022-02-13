@@ -24,7 +24,7 @@ jobs:
 
     - name: Get current version
       id: old_version
-      run: echo ::set-output name=version::$(cat params/VERSION
+      run: echo ::set-output name=version::$(cat params/VERSION)
       
     - run: echo steps.latest.outputs.version && echo steps.old_version.outputs.version
 
