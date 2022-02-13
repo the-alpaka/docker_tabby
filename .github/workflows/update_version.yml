@@ -6,7 +6,7 @@ on:
 
 jobs:
   update-version:
-    name: Initialize environment
+    name: Update Version
     runs-on: ubuntu-latest
     steps:
 
@@ -20,7 +20,7 @@ jobs:
     
     - name: Format version
       id: latest
-      run: "version='${{ steps.version.outputs.release }}' && echo ::set-output name=version::${version/'v'/''} && echo ${version/'v'/''} > params/VERSION"
+      run: "version='${{ steps.version.outputs.release }}' && echo ::set-output name=version::${version/'v'/''} && mkdir params && echo ${version/'v'/''} > params/VERSION"
 
     - name: Get current version
       id: old_version
