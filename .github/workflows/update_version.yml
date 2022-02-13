@@ -26,10 +26,10 @@ jobs:
       id: old_version
       run: echo ::set-output name=version::$(cat params/VERSION)
       
-    - run: echo steps.latest.outputs.version && echo steps.old_version.outputs.version
+    - run: echo ${{ steps.latest.outputs.version }} && ${{ echo steps.old_version.outputs.version }}
 
     - name: Compare versions
-      if: steps.latest.outputs.version > steps.old_version.outputs.version
+      if: ${{ steps.latest.outputs.version }} > ${{ steps.old_version.outputs.version }}
       uses: test-room-7/action-update-file@v1
       with:
           file-path: params/VERSION
