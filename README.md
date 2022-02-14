@@ -83,6 +83,9 @@ networks:
     internal: true
 ```
 
+## License
+This project is licensed under the AGPL license - see the [LICENSE](https://github.com/the-alpaka/docker_tabby/blob/main/LICENSE) file for details.
+
 ## Credits
 All credits to Tabby goes to the devs at [https://github.com/bertvandepoel/tabby](https://github.com/bertvandepoel/tabby). 
 Credits for the docker base image go to the devs over at [Linuxserver.io](https://linuxserver.io).
