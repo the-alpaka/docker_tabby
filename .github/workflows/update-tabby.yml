@@ -1,9 +1,9 @@
 name: Update Tabby files
 
 on:
-  push:
-    paths:
-      - 'params/VERSION'
+  #push:
+  #  paths:
+  #   - 'params/VERSION'
   workflow_dispatch:
 
 jobs:
