@@ -16,7 +16,7 @@ jobs:
 
       - name: Get current version
         id: current_version
-        run: echo ::set-output name=version::$(curl https://cdn.githubraw.com/the-alpaka/docker_tabby/main/params/VERSION)
+        run: echo ::set-output name=version::$(curl https://raw.githubusercontent.com/the-alpaka/docker_tabby/main/params/VERSION)
 
       - name: Get latest Tabby files
         run: mkdir -p root/config/defaults/tabby && git clone -b v${{ steps.latest.outputs.version }} https://github.com/bertvandepoel/tabby.git root/config/defaults/tabby

@@ -24,7 +24,7 @@ jobs:
 
     - name: Get current version
       id: current_version
-      run: echo ::set-output name=version::$(curl https://cdn.githubraw.com/the-alpaka/docker_tabby/main/params/VERSION)
+      run: echo ::set-output name=version::$(curl https://raw.githubusercontent.com/the-alpaka/docker_tabby/main/params/VERSION)
       
     - run: echo ${{ steps.latest.outputs.version }} && echo ${{ steps.current_version.outputs.version }}
 
