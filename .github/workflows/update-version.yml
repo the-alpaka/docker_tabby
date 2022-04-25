@@ -17,21 +17,14 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         repository: 'bertvandepoel/tabby'
         type: 'latest'
-        
-    - name: Get current version
-      id: old_version
-      run: mkdir -p curr_repo && git clone https://github.com/the-alpaka/docker_tabby.git curr_repo && echo ::set-output name=version::$(cat curr_repo/params/VERSION)
     
     - name: Format version
       id: latest
       run: "version='${{ steps.version.outputs.release }}' && echo ::set-output name=version::${version/'v'/''} && mkdir params && echo ${version/'v'/''} > params/VERSION"
-<<<<<<< HEAD:.github/workflows/update-version.yml
 
     - name: Get current version
       id: current_version
       run: echo ::set-output name=version::$(curl https://cdn.githubraw.com/the-alpaka/docker_tabby/main/params/VERSION)
-=======
->>>>>>> 7f7eddb1c8dcfc01b32d095d21e3b15e20ff95c5:.github/workflows/update_version.yml
       
     - run: echo ${{ steps.latest.outputs.version }} && echo ${{ steps.current_version.outputs.version }}
 
