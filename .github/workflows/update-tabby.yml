@@ -18,27 +18,19 @@ jobs:
         id: latest
         run: echo ::set-output name=version::$(cat params/VERSION)
 
-      - name: Get latest Tabby files
-        run: git clone -b v${{ steps.latest.outputs.version }} https://github.com/bertvandepoel/tabby.git
+      - name: Clear and prepare directory
+        run: rm -r root/defaults/tabby && mkdir -p root/defaults/tabby
 
-      - name: Update files
-        run: git clone https://github.com/the-alpaka/docker_tabby.git && ls &&  rm -r docker_tabby/root/defaults/tabby && mv tabby docker_tabby/root/defaults && ls docker_tabby/root/defaults && cd docker_tabby
+      - name: Get latest Tabby files
+        run: git clone -b v${{ steps.latest.outputs.version }} https://github.com/bertvandepoel/tabby.git root/defaults/tabby 
       
       - name: Setup Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "<>"
 
-      - name: Commit Changes
+      - name: Commit changes
         run: |
-          ls
-          #git add .
-          #git commit -am 'bot update'
-          #git push
-
-      #- name: Push updates files to Github
-      #  uses: test-room-7/action-update-file@v1
-      #  with:
-      #      file-path: root/defaults/tabby
-      #      commit-msg: bot update
-      #      github-token: ${{ secrets.GITHUB_TOKEN }}
+          git add .
+          git commit -am 'bot update'
+          git push
