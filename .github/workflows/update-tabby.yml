@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Get current version
-        id: current_version
+        id: latest
         run: echo ::set-output name=version::$(curl https://raw.githubusercontent.com/the-alpaka/docker_tabby/main/params/VERSION)
 
       - name: Get latest Tabby files
