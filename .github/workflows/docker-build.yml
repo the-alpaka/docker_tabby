@@ -2,8 +2,8 @@ name: Build Container and Push to Docker Hub
 
 on:
   push:
-    paths:
-      - 'root/defaults/tabby'
+    #paths:
+    #  - 'root/defaults/tabby'
   workflow_dispatch:
 
 jobs:
