@@ -16,8 +16,8 @@ jobs:
         run: echo ::set-output name=version::$(cat params/VERSION)
     
       - name: Get latest Tabby files
-        run: mkdir -p /root/config/defaults/tabby && \
-             git clone \
+        run: sudo mkdir -p /root/config/defaults/tabby && \
+             sudo git clone \
              -b v${{ steps.latest.outputs.version }} \
              https://github.com/bertvandepoel/tabby.git \
              /root/config/defaults/tabby
