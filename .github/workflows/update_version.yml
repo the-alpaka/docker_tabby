@@ -17,14 +17,14 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         repository: 'bertvandepoel/tabby'
         type: 'latest'
+        
+    - name: Get current version
+      id: old_version
+      run: echo ::set-output name=version::$(cat params/VERSION)
     
     - name: Format version
       id: latest
       run: "version='${{ steps.version.outputs.release }}' && echo ::set-output name=version::${version/'v'/''} && mkdir params && echo ${version/'v'/''} > params/VERSION"
-
-    - name: Get current version
-      id: old_version
-      run: echo ::set-output name=version::$(cat params/VERSION)
       
     - run: echo ${{ steps.latest.outputs.version }} && echo ${{ steps.old_version.outputs.version }}
 
