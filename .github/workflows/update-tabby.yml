@@ -22,7 +22,7 @@ jobs:
         run: git clone -b v${{ steps.latest.outputs.version }} https://github.com/bertvandepoel/tabby.git
 
       - name: Update files
-        run: git clone https://github.com/the-alpaka/docker_tabby.git && rm -r docker_tabby/root/defaults/tabby && mv tabby docker_tabby/root/defaults
+        run: git clone https://github.com/the-alpaka/docker_tabby.git && rm -r docker_tabby/root/defaults/tabby && mv tabby docker_tabby/root/defaults && cd docker_tabby
       
       - name: Setup Git
         run: |
@@ -31,7 +31,6 @@ jobs:
 
       - name: Commit Changes
         run: |
-          cd docker_tabby
           git add .
           git commit -am 'bot update'
           git push
