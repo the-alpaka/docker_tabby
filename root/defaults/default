@@ -18,8 +18,4 @@ server {
         fastcgi_index index.php;
         include /etc/nginx/fastcgi_params;
     }
-
-    location /login {
-        try_files $uri $uri/ /login.html /index.php?args =404;
-    }
 }

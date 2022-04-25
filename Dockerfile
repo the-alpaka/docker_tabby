@@ -1,14 +1,8 @@
-FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.14
-ARG TAG
+FROM linuxserver/nginx:latest
+ENV TABBY_VERSION=latest
+COPY root/ /
 RUN \
-    echo 'Install Dependencies' && \
-    apk add --no-cache --upgrade \ 
-    git \
-    php7 php7-fpm php7-opcache && \
-    echo 'Install Tabby' && \
-    mkdir -p /app && \
-    cd /app && git clone -b v${TAG} https://github.com/bertvandepoel/tabby.git && \
-    echo 'Remove Dependencies' && \
-    apk del --purge git
-COPY default.conf /config/nginx/site-confs/default
+    apk add --no-cache --upgrade git && \ 
+    chmod +x /etc/cont-init.d/20-config /periodic/daily/tabby-cron
 EXPOSE 80
+VOLUME /config

@@ -3,7 +3,7 @@ name: Build Container and Push to Docker Hub
 on:
   push:
     paths:
-      - 'params/VERSION'
+      - 'root/defaults/tabby'
   workflow_dispatch:
 
 jobs:
