@@ -11,20 +11,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Get Version
         id: latest
         run: echo ::set-output name=version::$(cat params/VERSION)
     
       - name: Get latest Tabby files
-        run: sudo mkdir -p /root/config/defaults/tabby && \
+        run: sudo mkdir -p ./root/config/defaults/tabby && \
              sudo git clone \
              -b v${{ steps.latest.outputs.version }} \
              https://github.com/bertvandepoel/tabby.git \
-             /root/config/defaults/tabby
+             ./root/config/defaults/tabby
 
       - name: Push updates files to Github
         uses: test-room-7/action-update-file@v1
         with:
-            file-path: root/defaults/tabby
+            file-path: ./root/defaults/tabby
             commit-msg: bot update
             github-token: ${{ secrets.GITHUB_TOKEN }}
