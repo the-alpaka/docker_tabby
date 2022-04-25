@@ -19,10 +19,10 @@ jobs:
         run: echo ::set-output name=version::$(curl https://raw.githubusercontent.com/the-alpaka/docker_tabby/main/params/VERSION)
 
       - name: Get latest Tabby files
-        run: git clone -b v${{ steps.latest.outputs.version }} https://github.com/bertvandepoel/tabby.git
+        run: git clone -b v${{ steps.latest.outputs.version }} https://github.com/bertvandepoel/tabby.git && ls
 
       - name: Update files
-        run: git clone https://github.com/the-alpaka/docker_tabby.git && ls &&  rm -r docker_tabby/root/defaults/tabby && mv tabby docker_tabby/root/defaults $$ ls docker_tabby/root/defaults && cd docker_tabby
+        run: git clone https://github.com/the-alpaka/docker_tabby.git && ls &&  rm -r docker_tabby/root/defaults/tabby && mv tabby docker_tabby/root/defaults && ls docker_tabby/root/defaults && cd docker_tabby
       
       - name: Setup Git
         run: |
