@@ -19,11 +19,17 @@ jobs:
         run: echo ::set-output name=version::$(curl https://raw.githubusercontent.com/the-alpaka/docker_tabby/main/params/VERSION)
 
       - name: Get latest Tabby files
-        run: mkdir -p root/config/defaults/tabby && git clone -b v${{ steps.latest.outputs.version }} https://github.com/bertvandepoel/tabby.git root/config/defaults/tabby
+        run: git clone -b v${{ steps.latest.outputs.version }} https://github.com/bertvandepoel/tabby.git
 
-      - name: Push updates files to Github
-        uses: test-room-7/action-update-file@v1
-        with:
-            file-path: root/defaults/tabby
-            commit-msg: bot update
-            github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update files
+        run: git clone https://github.com/the-alpaka/docker_tabby.git && \
+             cd docker_tabby && rm -r root/defaults/tabby && \
+             mv tabby root/defaults && \
+             git push
+
+      #- name: Push updates files to Github
+      #  uses: test-room-7/action-update-file@v1
+      #  with:
+      #      file-path: root/defaults/tabby
+      #      commit-msg: bot update
+      #      github-token: ${{ secrets.GITHUB_TOKEN }}
