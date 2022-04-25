@@ -20,7 +20,7 @@ jobs:
         
     - name: Get current version
       id: old_version
-      run: echo ::set-output name=version::$(cat params/VERSION)
+      run: mkdir -p curr_repo && git clone https://github.com/the-alpaka/docker_tabby.git curr_repo && echo ::set-output name=version::$(cat curr_repo/params/VERSION)
     
     - name: Format version
       id: latest
