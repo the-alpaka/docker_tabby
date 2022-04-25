@@ -31,8 +31,7 @@ jobs:
 
       - name: Commit Changes
         run: |
-          git add root/defaults/tabby
-          git commit -m 'bot update'
+          git commit -am 'bot update'
           git push
 
       #- name: Push updates files to Github
