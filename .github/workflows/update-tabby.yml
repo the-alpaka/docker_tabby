@@ -8,7 +8,7 @@ on:
 
 jobs:
   update-tabby:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
 
       - name: Get Version
