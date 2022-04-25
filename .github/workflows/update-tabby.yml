@@ -30,7 +30,10 @@ jobs:
           git config user.email "<>"
 
       - name: Commit Changes
-        run: ls
+        run: |
+          git add .
+          git commit -m 'bot update'
+          git push
 
       #- name: Push updates files to Github
       #  uses: test-room-7/action-update-file@v1
