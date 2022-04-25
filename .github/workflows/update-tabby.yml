@@ -22,7 +22,15 @@ jobs:
         run: git clone -b v${{ steps.latest.outputs.version }} https://github.com/bertvandepoel/tabby.git
 
       - name: Update files
-        run: git clone https://github.com/the-alpaka/docker_tabby.git && rm -r docker_tabby/root/defaults/tabby && mv tabby docker_tabby/root/defaults && cd docker_tabby && git push
+        run: git clone https://github.com/the-alpaka/docker_tabby.git && rm -r docker_tabby/root/defaults/tabby && mv tabby docker_tabby/root/defaults
+      
+      - name: Setup Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "<>"
+
+      - name: Commit Changes
+        run: ls
 
       #- name: Push updates files to Github
       #  uses: test-room-7/action-update-file@v1
