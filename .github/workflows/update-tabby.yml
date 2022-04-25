@@ -19,7 +19,7 @@ jobs:
         run: echo ::set-output name=version::$(cat params/VERSION)
 
       - name: Clear and prepare directory
-        run: rm -r root/defaults/tabby && mkdir -p root/defaults/tabby
+        run: rm -rf root/defaults/tabby && mkdir -p root/defaults/tabby
 
       - name: Get latest Tabby files
         run: git clone -b v${{ steps.latest.outputs.version }} https://github.com/bertvandepoel/tabby.git root/defaults/tabby 
