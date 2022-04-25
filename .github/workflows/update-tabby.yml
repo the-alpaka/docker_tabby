@@ -31,6 +31,6 @@ jobs:
 
       - name: Commit changes
         run: |
-          git add -A 
+          git add . 
           git commit -am 'bot update'
           git push
