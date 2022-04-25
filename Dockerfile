@@ -3,7 +3,8 @@ ARG TAG
 RUN \
     echo 'Install Dependencies' && \
     apk add --no-cache --upgrade \ 
-    git && \
+    git \
+    php7 php7-fpm php7-opcache && \
     echo 'Install Tabby' && \
     mkdir -p /app && \
     cd /app && git clone -b v${TAG} https://github.com/bertvandepoel/tabby.git && \

@@ -1,0 +1,4 @@
+#!/bin/bash
+# Run the cron script for Tabby
+
+php /config/www/tabby/cron.php
