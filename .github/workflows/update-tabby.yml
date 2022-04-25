@@ -31,9 +31,10 @@ jobs:
 
       - name: Commit Changes
         run: |
-          git add .
-          git commit -am 'bot update'
-          git push
+          ls
+          #git add .
+          #git commit -am 'bot update'
+          #git push
 
       #- name: Push updates files to Github
       #  uses: test-room-7/action-update-file@v1
